@@ -13,11 +13,13 @@ WordPress plugin to extract all data from all blocks inside of a post (created w
 
 ## Install
 
-Via Composer
+Install the plugin via Composer
 
 ``` bash
 $ composer require leoloso/wp-block-data
 ```
+
+And then activate the plugin "WordPress Block Data"
 
 ## Usage
 
