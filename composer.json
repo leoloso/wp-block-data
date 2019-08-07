@@ -1,0 +1,29 @@
+{
+    "name": "leoloso/wp-block-data",
+    "type": "wordpress-plugin",
+    "description": "WordPress plugin to extract all data from all blocks inside a of post (created with the Gutenberg content editor)",
+    "keywords": [
+        "WordPress",
+        "Gutenberg",
+        "Block",
+        "Gutenblock",
+        "API"
+    ],
+    "homepage": "https://github.com/leoloso/wp-block-data",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leonardo Losoviz",
+            "email": "leo@getpop.org",
+            "homepage": "https://getpop.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.6"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
