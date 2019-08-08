@@ -20,12 +20,12 @@ function get_block_data($content, $remove_divider_block = true)
  */
 function remove_blocks_without_name($blocks)
 {
-  return array_filter(
+  return array_values(array_filter(
     $blocks,
     function($block) {
       return $block['blockName'];
     }
-  );
+  ));
 }
 
 /**
