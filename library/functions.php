@@ -3,20 +3,36 @@
 /**
  * Export all (Gutenberg) blocks' data from a WordPress post
  */
-function get_block_data($content) 
+function get_block_data($content, $remove_divider_block = true)
 {
   // Parse the blocks, and convert them into a single-level array
   $ret = [];
   $blocks = parse_blocks($content);
   recursively_add_blocks($ret, $blocks);
+  if ($remove_divider_block) {
+    $ret = filter_blocks_without_name($ret);
+  }
   return $ret;
+}
+
+/**
+ * Remove the blocks without name, such as the empty block divider
+ */
+function filter_blocks_without_name($blocks)
+{
+  return array_filter(
+    $blocks,
+    function($block) {
+      return $block['blockName'];
+    }
+  );
 }
 
 /**
  * Add block data (including global and nested blocks) into the first level of the array
  */
-function recursively_add_blocks(&$ret, $blocks) 
-{  
+function recursively_add_blocks(&$ret, $blocks)
+{
   foreach ($blocks as $block) {
     // Global block: add the referenced block instead of this one
     if ($block['attrs']['ref']) {
@@ -39,7 +55,7 @@ function recursively_add_blocks(&$ret, $blocks)
 /**
  * Function based on `render_block_core_block`
  */
-function recursively_render_block_core_block($attributes) 
+function recursively_render_block_core_block($attributes)
 {
   if (empty($attributes['ref'])) {
     return [];
