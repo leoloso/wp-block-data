@@ -10,7 +10,7 @@ function get_block_data($content, $remove_divider_block = true)
   $blocks = parse_blocks($content);
   recursively_add_blocks($ret, $blocks);
   if ($remove_divider_block) {
-    $ret = filter_blocks_without_name($ret);
+    $ret = remove_blocks_without_name($ret);
   }
   return $ret;
 }
@@ -18,7 +18,7 @@ function get_block_data($content, $remove_divider_block = true)
 /**
  * Remove the blocks without name, such as the empty block divider
  */
-function filter_blocks_without_name($blocks)
+function remove_blocks_without_name($blocks)
 {
   return array_filter(
     $blocks,
