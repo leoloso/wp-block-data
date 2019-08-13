@@ -17,7 +17,7 @@ function get_block_data($content, $remove_divider_block = true)
 
   // Remove 'innerBlocks' property if it exists (since that code was copied to the first level, it is currently duplicated)
   foreach ($ret as &$block) {
-      unset($block['innerBlocks']);
+    unset($block['innerBlocks']);
   }
 
   return $ret;
