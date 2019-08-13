@@ -9,9 +9,17 @@ function get_block_data($content, $remove_divider_block = true)
   $ret = [];
   $blocks = parse_blocks($content);
   recursively_add_blocks($ret, $blocks);
+
+  // Maybe remove blocks without name
   if ($remove_divider_block) {
     $ret = remove_blocks_without_name($ret);
   }
+
+  // Remove 'innerBlocks' properties for all blocks (since that code was copied to the first level, it is currently duplicated)
+  foreach ($ret as &$block) {
+      unset($block['innerBlocks']);
+  }
+
   return $ret;
 }
 
